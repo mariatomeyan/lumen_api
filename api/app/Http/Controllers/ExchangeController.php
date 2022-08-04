@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Currency;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -18,44 +19,8 @@ class ExchangeController extends Controller
     }
 
 
-    public function showAllStudents()
+    public function getALl()
     {
-        return response()->json(Student::all());
-    }
-
-    public function showOneStudent($id)
-    {
-        return response()->json(Student::with('user')->find($id));
-    }
-
-    public function create(Request $request)
-    {
-        $this->validate($request, [
-
-            'Country' => 'required|alpha',
-            'IdentificationNo' => 'required',
-            'DateOfBirth' => 'required',
-            'RegisteredOn' => 'required',
-            'UserId' => 'required|unique:users,user_id',
-
-        ]);
-
-        $author = Student::create($request->all());
-
-        return response()->json($author, 201);
-    }
-
-    public function update($id, Request $request)
-    {
-        $author = Student::findOrFail($id);
-        $author->update($request->all());
-
-        return response()->json($author, 200);
-    }
-
-    public function delete($id)
-    {
-        Student::findOrFail($id)->delete();
-        return response('Deleted Successfully', 200);
+        return response()->json(Currency::all());
     }
 }

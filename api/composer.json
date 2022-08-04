@@ -16,8 +16,14 @@
         "phpunit/phpunit": "^9.5.10"
     },
     "autoload": {
+        "classmap": [
+            "app/Contracts/",
+            "app/Services/"
+        ],
         "psr-4": {
             "App\\": "app/",
+            "App\\Services\\": "app/Services/",
+            "App\\Contracts\\": "app/Contracts/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

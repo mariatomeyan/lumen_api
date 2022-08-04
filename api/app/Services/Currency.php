@@ -1,8 +1,8 @@
 <?php
 namespace App\Services;
 
-enum Currency {
-    case USD;
-    case EUR;
-    case RUB;
+enum Currency:string {
+    case USD = 'USD';
+    case EUR = 'EUR';
+    case RUB = 'RUB';
 }

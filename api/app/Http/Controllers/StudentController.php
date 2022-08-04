@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\ExchangeRateInterface;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -28,8 +29,13 @@ class StudentController extends Controller
         return response()->json(Student::with('user')->find($id));
     }
 
+    public function test(ExchangeRateInterface $service){
+        return "hello";
+    }
+
     public function create(Request $request)
     {
+        //todo // integrate here Rule seperate for the request with its defined Privacy
         $this->validate($request, [
 
             'Country' => 'required|alpha',
@@ -37,11 +43,10 @@ class StudentController extends Controller
             'DateOfBirth' => 'required',
             'RegisteredOn' => 'required',
             'UserId' => 'required|unique:users,user_id',
-
         ]);
 
+        //todo create Resource response repository
         $author = Student::create($request->all());
-
         return response()->json($author, 201);
     }
 

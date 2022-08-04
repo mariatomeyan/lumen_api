@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Interfaces\ExchangeRateInterface;
+use App\Contracts\ExchangeRateInterface;
 use App\Services\Currency;
 
 class ExchangeRateService implements ExchangeRateInterface {
@@ -13,7 +13,7 @@ class ExchangeRateService implements ExchangeRateInterface {
     }
     public function getAPIEndpoint(): string
     {
-        return 'env()';
+        return env('EXCHANGE_RATE_API');
     }
 
     public function getCurrency(): string

@@ -91,9 +91,9 @@ $app->configure('app');
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+ $app->register(App\Providers\AppServiceProvider::class);
+ $app->register(App\Providers\AuthServiceProvider::class);
+ $app->register(App\Providers\EventServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -113,6 +113,8 @@ $app->routeMiddleware([
 $app->register(App\Providers\AuthServiceProvider::class);
 //add this line for jwt auth
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+
+
 
 
 $app->router->group([

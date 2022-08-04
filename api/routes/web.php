@@ -26,10 +26,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 $router->group(['prefix' => 'api', 'middleware' => ['jwt.auth']], function () use ($router) {
     $router->get('students', ['uses' => 'StudentController@showAllStudents']);
     $router->get('students/{id}', ['uses' => 'StudentController@showOneStudent']);
-    $router->post('students', ['uses' => 'StudentController@create']);
     $router->delete('students/{id}', ['uses' => 'StudentController@delete']);
     $router->put('students/{id}', ['uses' => 'StudentController@update']);
+    $router->post('students', ['uses' => 'StudentController@create']);
 });
+
 $router->group(['prefix' => 'api/v1'], function () use ($router) {
-    $router->post('register', 'AuthController@register');
+    $router->get('currencies', 'ExchangeController@getALl');
 });
